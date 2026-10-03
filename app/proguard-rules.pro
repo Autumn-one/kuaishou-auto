@@ -1,0 +1,2 @@
+-dontwarn com.kuaishou.**
+-keep class com.kuaishou.auto.** { *; }

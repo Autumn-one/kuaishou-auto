@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!--
+        更新功能所需。
+        INTERNET / ACCESS_NETWORK_STATE：下载 APK 与查询 GitHub API。
+        REQUEST_INSTALL_PACKAGES：Android 8+ 用它引导用户开启「安装未知应用」。
+        仅此而已 —— 安装本身走 PackageInstaller，不使用静默安装特权。
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <!--
+        Android 11+ 的包可见性限制：不加这段声明，
+        getLaunchIntentForPackage("com.kuaishou.nebula") 会直接返回 null，
+        导致"开始任务时主动拉起快手"失效。
+    -->
+    <queries>
+        <package android:name="com.kuaishou.nebula" />
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.KuaishouAuto">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".service.AutoScrollService"
+            android:exported="true"
+            android:label="@string/accessibility_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <!--
+            foregroundServiceType 说明：
+            悬浮窗本身只需要 specialUse。mediaProjection 是"升级用"的类型，
+            只有用户授权屏幕捕获后才会在代码里主动声明（见 attachCapture）。
+
+            两者都写在 manifest 里，是因为 Android 要求 startForeground()
+            使用的类型必须已在 manifest 声明；而**何时使用**由代码控制 ——
+            未授权时就只用 specialUse，避免 Android 14+ 抛 SecurityException
+            （那会让服务崩溃、进程被杀，表现为"点显示悬浮窗程序退出"）。
+        -->
+        <service
+            android:name=".service.OverlayService"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection|specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Floating control panel for in-app automation" />
+        </service>
+
+
+        <!--
+            安装结果接收器。exported=false 是安全的：
+            系统通过 PendingIntent 的身份投递结果，不需要对外暴露。
+        -->
+        <receiver
+            android:name=".update.UpdateResultReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kuaishou.auto.INSTALL_RESULT" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

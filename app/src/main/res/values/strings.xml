@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">振华自动上滑</string>
+    <string name="accessibility_label">振华自动上滑</string>
+    <string name="accessibility_description">用于在快手极速版首页执行自动上滑操作。开启后本服务会读取当前页面类型并模拟滑动。</string>
+
+    <string name="title_permissions">权限检查</string>
+    <string name="perm_overlay">悬浮窗权限</string>
+    <string name="perm_accessibility">无障碍服务</string>
+    <string name="perm_capture">屏幕捕获授权</string>
+    <string name="btn_grant">去开启</string>
+    <string name="status_granted">已开启</string>
+    <string name="status_missing">未开启</string>
+
+    <string name="hint_start">请在权限齐备后，点击悬浮窗按钮开始任务</string>
+    <string name="btn_show_overlay">显示悬浮窗</string>
+    <string name="btn_hide_overlay">隐藏悬浮窗</string>
+    <string name="overlay_start">开始</string>
+    <string name="overlay_stop">停止</string>
+
+    <string name="btn_exit_app">退出并关闭悬浮窗</string>
+    <string name="toast_overlay_hidden">悬浮窗已隐藏，任务继续运行</string>
+    <string name="toast_overlay_shown">悬浮窗已显示</string>
+    <string name="toast_need_overlay_perm">请先授予悬浮窗权限，否则悬浮窗无法显示</string>
+    <string name="toast_exited">已退出</string>
+    <string name="hint_overlay_toggle">悬浮窗只提供开始/停止；隐藏悬浮窗不停止任务，「退出」会停止任务并结束后台服务</string>
+
+    <!-- 悬浮窗实时状态（跟随前台服务推送，保证按钮文案与窗口一致） -->
+    <string name="overlay_state_shown">悬浮窗：已显示</string>
+    <string name="overlay_state_hidden">悬浮窗：未显示</string>
+    <string name="overlay_state_running">悬浮窗：已显示 · 任务运行中</string>
+    <string name="overlay_state_hidden_running">悬浮窗：未显示 · 任务仍在运行</string>
+    <string name="overlay_state_running_progress">悬浮窗：已显示 · 任务运行中 · 当前进度 %1$d%%</string>
+
+    <!-- 设置：取帧方式（读进度条需要截图，有两种方式可选） -->
+    <string name="title_settings">设置</string>
+    <string name="setting_capture_mode">进度条取帧方式</string>
+    <string name="capture_mode_auto">自动（推荐）</string>
+    <string name="capture_mode_accessibility">无障碍截图</string>
+    <string name="capture_mode_projection">MediaProjection</string>
+    <string name="capture_mode_auto_desc">能用无障碍截图就用它（不必授权），不支持时自动改用 MediaProjection。</string>
+    <string name="capture_mode_accessibility_desc">不需要任何授权弹窗，进程重启也不用重新授权。需要 Android 11+，系统限流约每秒 3 张。</string>
+    <string name="capture_mode_projection_desc">兼容性最好，但每次启动都要点一次系统「录制或投放」授权框。</string>
+    <string name="setting_capture_current">当前实际使用：%1$s</string>
+    <string name="setting_capture_mode_desc">读进度条需要截图，有两种取帧方式。一般不用改，自动即可。</string>
+
+    <!-- 折叠区：默认收起，省得普通用户被高级选项干扰 -->
+    <string name="expand_arrow_collapsed">展开 ▾</string>
+    <string name="expand_arrow_expanded">收起 ▴</string>
+    <string name="setting_capture_summary">当前：%1$s（点击展开可改）</string>
+    <string name="toast_capture_mode_saved">已切换为「%1$s」</string>
+    <string name="toast_capture_mode_restart_task">设置已保存，重启任务后生效</string>
+
+    <!-- 设置：单条视频停留上限（到达即上滑，带 ±20%% 抖动） -->
+    <string name="setting_max_watch">单条视频停留上限</string>
+    <string name="setting_max_watch_desc">到达上限自动上滑。实际生效时间会上下浮动约 20%，不会刚好卡在该分钟数上。</string>
+    <string name="setting_max_watch_unit">分钟</string>
+    <string name="setting_max_watch_minus">−</string>
+    <string name="setting_max_watch_plus">＋</string>
+    <string name="setting_max_watch_current">当前：%1$d 分钟（实际约 %2$d~%3$d 分钟）</string>
+    <string name="setting_no_bar_note">读不到进度条的视频：停留 8 秒~2 分钟内随机时长后上滑</string>
+    <string name="toast_max_watch_saved">停留上限已设为 %1$d 分钟（重启任务后生效）</string>
+
+    <!-- 更新：检查 / 下载 / 安装 -->
+    <string name="title_update">版本更新</string>
+    <string name="update_current">当前版本：%1$s</string>
+    <string name="btn_check_update">检查更新</string>
+    <string name="btn_do_update">立即更新</string>
+    <string name="update_checking">正在检查更新…</string>
+    <string name="update_downloading">正在下载 %1$d%%</string>
+    <string name="update_downloading_mirror">正在下载 %1$d%%（%2$s）</string>
+    <string name="update_verifying">正在校验安装包…</string>
+    <string name="update_ready">已下载完成，可以安装</string>
+    <string name="update_need_permission">需要先允许「安装未知应用」，点此前往设置</string>
+    <string name="update_available">发现新版本 %1$s</string>
+    <string name="update_installing">正在发起安装…</string>
+    <string name="update_notes_title">更新说明</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  单色层（Android 13+ 主题图标）：系统用自己的颜色重绘，
+  因此只保留形状，不依赖颜色语义。
+  渐淡层次在该层统一为不透明 —— 单色渲染下 alpha 差异不可控，
+  保留半透明会让箭头显得"缺一块"。
+  因此该层的进度条画成整条，而不是亮段+暗段。
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,51 L72,69 L72,77 L54,59 L36,77 L36,69 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,37 L72,55 L72,63 L54,45 L36,63 L36,55 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,24 L68,38 L68,45 L54,31 L40,45 L40,38 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,81 L78,81 L78,86 L30,86 Z" />
+</vector>

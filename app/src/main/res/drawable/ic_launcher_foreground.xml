@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  振华自动上滑 —— 应用图标前景层
+
+  设计说明：
+  - 自适应图标只保证中心 66x66（108 视口的 21..87）可见，
+    四周会被启动器裁切，因此所有图形收敛在该区域内。
+  - 图形语义（一眼可读，小尺寸下也清楚）：
+      · 三个向上箭头 = 连续上滑
+      · 箭头自下而上渐淡 = 运动方向
+      · 底部进度条（亮段 + 暗段）= 进度追踪，本应用的核心能力
+  - 统一白色 + 蓝色底（colors.xml），深浅主题下都清晰。
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- 最下（最亮/最实）：主箭头 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,51 L72,69 L72,77 L54,59 L36,77 L36,69 Z" />
+
+    <!-- 中间箭头：略淡 -->
+    <path
+        android:fillAlpha="0.72"
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,37 L72,55 L72,63 L54,45 L36,63 L36,55 Z" />
+
+    <!-- 最上箭头：最淡，形成渐隐层次 -->
+    <path
+        android:fillAlpha="0.42"
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,24 L68,38 L68,45 L54,31 L40,45 L40,38 Z" />
+
+    <!-- 进度条：暗色轨道 -->
+    <path
+        android:fillAlpha="0.35"
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,81 L78,81 L78,86 L30,86 Z" />
+
+    <!-- 进度条：已播放的亮段 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,81 L61,81 L61,86 L30,86 Z" />
+</vector>

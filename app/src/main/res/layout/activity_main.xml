@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF5F6F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/app_name"
+            android:textColor="#FF1A1A1A"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:lineSpacingExtra="4dp"
+            android:text="自动在快手极速版首页上滑。视频播完自动翻页，遇到直播间立即翻页。"
+            android:textColor="#FF666666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="@string/title_permissions"
+            android:textColor="#FF1A1A1A"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- 悬浮窗权限 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="#FFFFFFFF"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/perm_overlay"
+                    android:textColor="#FF1A1A1A"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/status_overlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/status_missing"
+                    android:textColor="#FFE53935"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_overlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_grant" />
+        </LinearLayout>
+
+        <!-- 无障碍服务 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="#FFFFFFFF"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/perm_accessibility"
+                    android:textColor="#FF1A1A1A"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/status_accessibility"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/status_missing"
+                    android:textColor="#FFE53935"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_accessibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_grant" />
+        </LinearLayout>
+
+        <!-- 屏幕捕获 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:background="#FFFFFFFF"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/perm_capture"
+                    android:textColor="#FF1A1A1A"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/status_capture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/status_missing"
+                    android:textColor="#FFE53935"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_capture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_grant" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_show_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="#FF3C6EFF"
+            android:text="@string/btn_show_overlay"
+            android:textColor="#FFFFFFFF"
+            android:textSize="16sp" />
+
+        <!-- 设置标题（取帧方式已移到底部，见文件末尾的折叠区） -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"
+            android:text="@string/title_settings"
+            android:textColor="#FF1A1A1A"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- 设置：单条视频停留上限（分钟，可增减；实际值带 ±20% 抖动） -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="#FFFFFFFF"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setting_max_watch"
+                android:textColor="#FF1A1A1A"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/setting_max_watch_desc"
+                android:textColor="#FF777777"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_watch_minus"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="@string/setting_max_watch_minus"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/edit_watch_minutes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:importantForAutofill="no"
+                    android:textColor="#FF1A1A1A"
+                    android:textSize="22sp" />
+
+                <Button
+                    android:id="@+id/btn_watch_plus"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="@string/setting_max_watch_plus"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/setting_max_watch_unit"
+                    android:textColor="#FF666666"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/hint_watch_current"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="#FF3C6EFF"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/setting_no_bar_note"
+                android:textColor="#FF777777"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- 版本更新：检查 → 下载 → 安装 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"
+            android:text="@string/title_update"
+            android:textColor="#FF1A1A1A"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="#FFFFFFFF"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/text_current_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/update_current"
+                android:textColor="#FF1A1A1A"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/text_update_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="3dp"
+                android:textColor="#FF3C6EFF"
+                android:textSize="13sp" />
+
+            <ProgressBar
+                android:id="@+id/progress_update"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:max="100"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_check_update"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/btn_check_update" />
+
+                <Button
+                    android:id="@+id/btn_do_update"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/btn_do_update"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_update_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="3dp"
+                android:maxLines="8"
+                android:scrollbars="vertical"
+                android:textColor="#FF666666"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_exit_app"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="12dp"
+            android:background="#FF9E9E9E"
+            android:text="@string/btn_exit_app"
+            android:textColor="#FFFFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/hint_overlay_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="#FFEDF1FA"
+            android:lineSpacingExtra="4dp"
+            android:padding="12dp"
+            android:text="@string/overlay_state_hidden"
+            android:textColor="#FF333333"
+            android:textSize="13sp"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:lineSpacingExtra="4dp"
+            android:text="@string/hint_overlay_toggle"
+            android:textColor="#FF666666"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:lineSpacingExtra="4dp"
+            android:text="@string/hint_start"
+            android:textColor="#FF999999"
+            android:textSize="13sp" />
+
+        <!-- ===== 高级设置：取帧方式（默认折叠，放在页面最下方） ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="#FFFFFFFF"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- 折叠标题行：整行可点，点击展开/收起 -->
+            <LinearLayout
+                android:id="@+id/header_capture_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/setting_capture_mode"
+                    android:textColor="#FF1A1A1A"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/icon_capture_expand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/expand_arrow_collapsed"
+                    android:textColor="#FF888888"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- 折叠提示：收起状态下显示当前生效值，不必展开也能看到 -->
+            <TextView
+                android:id="@+id/hint_capture_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#FF777777"
+                android:textSize="12sp" />
+
+            <!-- 可折叠内容 -->
+            <LinearLayout
+                android:id="@+id/content_capture_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:lineSpacingExtra="2dp"
+                    android:text="@string/setting_capture_mode_desc"
+                    android:textColor="#FF777777"
+                    android:textSize="12sp" />
+
+                <RadioGroup
+                    android:id="@+id/group_capture_mode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/mode_auto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:text="@string/capture_mode_auto"
+                        android:textColor="#FF1A1A1A"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginBottom="8dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="@string/capture_mode_auto_desc"
+                        android:textColor="#FF777777"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/mode_accessibility"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:text="@string/capture_mode_accessibility"
+                        android:textColor="#FF1A1A1A"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginBottom="8dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="@string/capture_mode_accessibility_desc"
+                        android:textColor="#FF777777"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/mode_projection"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:text="@string/capture_mode_projection"
+                        android:textColor="#FF1A1A1A"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="@string/capture_mode_projection_desc"
+                        android:textColor="#FF777777"
+                        android:textSize="12sp" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/hint_capture_current"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#FF3C6EFF"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

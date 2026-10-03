@@ -1,0 +1,44 @@
+# ---------- 密钥与本地配置：绝对不入库 ----------
+release-config.json
+keystore/
+*.jks
+*.keystore
+local.properties
+
+# ---------- 构建产物 ----------
+build/
+app/build/
+.gradle/
+.kotlin/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# ---------- 调研产物（846 MB，勿入库）----------
+research/
+
+# ---------- 根目录调试截图 ----------
+bar-crop.png
+screen-now.png
+capture-dump.png
+capture-dump2.png
+cap1.png
+cap2.png
+seq1.png
+seq2.png
+seq3.png
+seq4.png
+
+# ---------- 根目录其余调试截图（上面没列全，这里兜底）----------
+/*.png
+/*.xml
+
+# ---------- 我测试时留下的构建产物 ----------
+app/build/outputs/apk/release/*.apk
+*.bin
+
+# ---------- IDE ----------
+.idea/
+*.iml
+.DS_Store

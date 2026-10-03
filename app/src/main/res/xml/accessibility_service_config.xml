@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    android:canTakeScreenshot="true" 用于"无障碍截图"这一可选的取帧方式
+    （AccessibilityService.takeScreenshot，API 30+）。
+    它比 MediaProjection 的好处：不需要「录制或投放」授权弹窗，
+    进程重启后也不用重新授权。
+    属性本身在更老的机型上会被忽略，不影响其它功能。
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowStateChanged|typeWindowContentChanged|typeViewScrolled|typeViewClicked"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault|flagReportViewIds|flagRetrieveInteractiveWindows|flagIncludeNotImportantViews"
+    android:canPerformGestures="true"
+    android:canRetrieveWindowContent="true"
+    android:canTakeScreenshot="true"
+    android:description="@string/accessibility_description"
+    android:notificationTimeout="100" />
